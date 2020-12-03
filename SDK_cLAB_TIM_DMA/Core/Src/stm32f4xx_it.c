@@ -34,7 +34,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define BUF_LENGTH	10
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -242,16 +242,10 @@ void TIM1_UP_TIM10_IRQHandler(void)
   /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 1 */
 
   char test_str[BUF_LENGTH] = {0};
-  sprintf(test_str, "TIM %d", tim_count);
+  sprintf(test_str, "TIM tick #%d", tim_count);
 
-  SDK_TRACE_Timestamp(PRINT, 1);
-  SDK_TRACE_Print(test_str);
-  SDK_TRACE_Timestamp(PRINT, 0);
-
-  if(tim_count == 4)
-	  HAL_UART_Transmit_DMA(&huart2, (uint8_t *)"UART test", BUF_LENGTH);
-
-  tim_count++;
+  if(tim_count++ < MAX_COUNT + 1)
+	  HAL_UART_Transmit(&huart2, (uint8_t *)test_str, BUF_LENGTH, 0xF);
 
   /* USER CODE END TIM1_UP_TIM10_IRQn 1 */
 }

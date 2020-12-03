@@ -37,7 +37,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define BUF_LENGTH	10
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -49,7 +49,7 @@
 
 /* USER CODE BEGIN PV */
 
-const char buf[BUF_LENGTH] = {0};
+char buf[BUF_LENGTH] = {0};
 uint16_t tim_count = 0;
 
 /* USER CODE END PV */
@@ -67,15 +67,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	if (huart->Instance == USART3)
 	{
-		if (huart3.RxXferSize == BUF_LENGTH) {
-			SDK_TRACE_Timestamp(PRINT, 1);
-			SDK_TRACE_Print(buf);
-			SDK_TRACE_Timestamp(PRINT, 0);
-		} else {
-			SDK_TRACE_Timestamp(PRINT, 1);
-			SDK_TRACE_Print("Test failed");
-			SDK_TRACE_Timestamp(PRINT, 0);
-		}
+		SDK_TRACE_Timestamp(P0, 1);
+		SDK_TRACE_Print(buf);
+		SDK_TRACE_Timestamp(P0, 0);
+
+		HAL_UART_Receive_DMA(&huart3, (uint8_t *)buf, BUF_LENGTH);
 	}
 }
 
@@ -141,7 +137,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-	  if(tim_count > 5)
+	  if(tim_count > MAX_COUNT)
 		  SDK_TRACE_Stop();
   }
   /* USER CODE END 3 */

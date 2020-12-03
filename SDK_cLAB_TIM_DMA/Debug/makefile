@@ -54,8 +54,8 @@ all: main-build
 main-build: SDK_cLAB_TIM_DMA.elf secondary-outputs
 
 # Tool invocations
-SDK_cLAB_TIM_DMA.elf: $(OBJS) $(USER_OBJS) C:\Work\CubeIDE_projects\workspace_1.3.0\SDK_cLAB\SDK_cLAB_TIM_DMA\STM32F407VGTX_RAM.ld
-	arm-none-eabi-gcc -o "SDK_cLAB_TIM_DMA.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Work\CubeIDE_projects\workspace_1.3.0\SDK_cLAB\SDK_cLAB_TIM_DMA\STM32F407VGTX_RAM.ld" --specs=nosys.specs -Wl,-Map="SDK_cLAB_TIM_DMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+SDK_cLAB_TIM_DMA.elf: $(OBJS) $(USER_OBJS) C:\Users\gur4e\Desktop\SDK_cLAB\SDK_cLAB_TIM_DMA\STM32F407VGTX_RAM.ld
+	arm-none-eabi-gcc -o "SDK_cLAB_TIM_DMA.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\gur4e\Desktop\SDK_cLAB\SDK_cLAB_TIM_DMA\STM32F407VGTX_RAM.ld" --specs=nosys.specs -Wl,-Map="SDK_cLAB_TIM_DMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
