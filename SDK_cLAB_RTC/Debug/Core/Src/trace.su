@@ -1,0 +1,6 @@
+trace.c:16:6:MX_TRACE_Init	4	static
+trace.c:29:6:SDK_TRACE_Start	4	static
+trace.c:38:6:SDK_TRACE_Stop	16	static,ignoring_inline_asm
+trace.c:52:6:SDK_TRACE_Timestamp	32	static
+trace.c:69:6:SDK_TRACE_Print	32	static
+trace.c:92:6:SDK_TRACE_Dump	32	static
